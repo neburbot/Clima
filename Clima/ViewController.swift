@@ -8,13 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var buscarTextField: UITextField!
+    @IBOutlet weak var temperaturaLabel: UILabel!
+    @IBOutlet weak var ciudadLabel: UILabel!
+    @IBOutlet weak var climaImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func LocalizacionButton(_ sender: UIButton) {
+    }
+    
+    @IBAction func BuscarButton(_ sender: UIButton) {
+    }
+    
 }
 
