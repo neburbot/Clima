@@ -2,10 +2,23 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegate {
     
+    func huboError(cualError: Error) {
+        print(cualError.localizedDescription)
+        DispatchQueue.main.async {
+            self.ciudadLabel.text = cualError.localizedDescription
+        }
+    }
+    
     func actualizarClima(clima: ClimaModelo) {
         print(clima.descripcionClima)
         print(clima.temperatura1Decimal)
         print(clima.condicionClima)
+        
+        DispatchQueue.main.async {
+            self.temperaturaLabel.text = clima.temperatura1Decimal + " °C"
+            self.ciudadLabel.text = clima.descripcionClima.capitalizingFirstLetter()
+            self.climaImageView.image = UIImage(named: clima.iconoClima)
+        }
     }
     
     var climaManager = ClimaManager()
@@ -19,6 +32,8 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegat
         
         climaManager.delegado = self
         buscarTextField.delegate = self
+        
+        climaImageView.layer.masksToBounds = true
     }
 
     @IBAction func LocalizacionButton(_ sender: UIButton) {
@@ -26,7 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegat
     
     @IBAction func BuscarButton(_ sender: UIButton) {
         if !buscarTextField.text!.isEmpty {
-            ciudadLabel.text = buscarTextField.text
+            //ciudadLabel.text = buscarTextField.text
             climaManager.fetchClima(nombreCiudad: buscarTextField.text!)
         }
         else {
@@ -49,4 +64,16 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegat
             return false
         }
     }
+}
+
+extension String {
+    
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+    
 }

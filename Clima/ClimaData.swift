@@ -21,6 +21,7 @@ struct Weather: Codable {
     
     let id: Int
     let description: String
+    let icon: String
     
 }
 

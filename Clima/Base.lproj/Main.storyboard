@@ -54,13 +54,17 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Qja-jL-hd7">
-                                <rect key="frame" x="30" y="90" width="345" height="128"/>
+                                <rect key="frame" x="30" y="90" width="345" height="100"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wUy-0B-bB9">
-                                        <rect key="frame" x="0.0" y="0.0" width="115" height="128"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01d" translatesAutoresizingMaskIntoConstraints="NO" id="wUy-0B-bB9">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="9dE-pF-dhs"/>
+                                            <constraint firstAttribute="height" constant="100" id="zPD-o6-MOt"/>
+                                        </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="JcW-9Y-xrS">
-                                        <rect key="frame" x="130" y="35" width="215" height="58"/>
+                                        <rect key="frame" x="115" y="21" width="230" height="58"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperatura" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffG-bs-47p">
                                                 <rect key="frame" x="0.0" y="0.0" width="97.5" height="20.5"/>
@@ -107,6 +111,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="01d" width="50" height="50"/>
         <image name="fondo2" width="320" height="480"/>
         <image name="localitation" width="113.5" height="160"/>
         <image name="search" width="186" height="186"/>

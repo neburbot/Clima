@@ -5,6 +5,7 @@ struct ClimaModelo {
     let nombreCiudad: String
     let descripcionClima: String
     let temperaturaCelcius: Double
+    let iconoClima: String
     
     var condicionClima: String {
         switch condicionID {
