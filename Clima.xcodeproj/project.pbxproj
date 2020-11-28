@@ -13,6 +13,8 @@
 		68AFD5B4256E198C002594B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68AFD5B2256E198C002594B5 /* Main.storyboard */; };
 		68AFD5B6256E198E002594B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68AFD5B5256E198E002594B5 /* Assets.xcassets */; };
 		68AFD5B9256E198E002594B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68AFD5B7256E198E002594B5 /* LaunchScreen.storyboard */; };
+		68D9EB0A256FDE8400D5B627 /* ClimaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9EB09256FDE8400D5B627 /* ClimaManager.swift */; };
+		68D9EB0C256FE49400D5B627 /* ClimaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D9EB0B256FE49400D5B627 /* ClimaData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		68AFD5B5256E198E002594B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68AFD5B8256E198E002594B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68AFD5BA256E198E002594B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68D9EB09256FDE8400D5B627 /* ClimaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimaManager.swift; sourceTree = "<group>"; };
+		68D9EB0B256FE49400D5B627 /* ClimaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimaData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				68AFD5B5256E198E002594B5 /* Assets.xcassets */,
 				68AFD5B7256E198E002594B5 /* LaunchScreen.storyboard */,
 				68AFD5BA256E198E002594B5 /* Info.plist */,
+				68D9EB09256FDE8400D5B627 /* ClimaManager.swift */,
+				68D9EB0B256FE49400D5B627 /* ClimaData.swift */,
 			);
 			path = Clima;
 			sourceTree = "<group>";
@@ -140,7 +146,9 @@
 			files = (
 				68AFD5B1256E198C002594B5 /* ViewController.swift in Sources */,
 				68AFD5AD256E198C002594B5 /* AppDelegate.swift in Sources */,
+				68D9EB0A256FDE8400D5B627 /* ClimaManager.swift in Sources */,
 				68AFD5AF256E198C002594B5 /* SceneDelegate.swift in Sources */,
+				68D9EB0C256FE49400D5B627 /* ClimaData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
