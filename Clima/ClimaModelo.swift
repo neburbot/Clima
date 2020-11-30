@@ -7,7 +7,7 @@ struct ClimaModelo {
     let temperaturaCelcius: Double
     let iconoClima: String
     
-    var condicionClima: String {
+    /*var condicionClima: String {
         switch condicionID {
             case 200...232:
                 return "cloud.bolt"
@@ -18,7 +18,7 @@ struct ClimaModelo {
             default:
                 return "cloud"
         }
-    }
+    }*/
     
     var temperatura1Decimal: String {
         return String(format: "%.1f", temperaturaCelcius)
