@@ -95,7 +95,6 @@ extension ViewController: ClimaManagerDelegate {
     func actualizarClima(clima: ClimaModelo) {
         print(clima.descripcionClima)
         print(clima.temperatura1Decimal)
-        //print(clima.condicionClima)
         
         DispatchQueue.main.async {
             self.temperaturaLabel.text = clima.temperatura1Decimal + "°C"
