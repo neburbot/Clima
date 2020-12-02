@@ -9,10 +9,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var buscarTextField: UITextField!
     @IBOutlet weak var temperaturaLabel: UILabel!
     @IBOutlet weak var ciudadLabel: UILabel!
+    @IBOutlet weak var descripcionLabel: UILabel!
+    @IBOutlet weak var sensacionLabel: UILabel!
+    @IBOutlet weak var tempminLabel: UILabel!
+    @IBOutlet weak var tempmaxLabel: UILabel!
+    @IBOutlet weak var climaLabel: UILabel!
     @IBOutlet weak var climaImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        temperaturaLabel.text = ""
+        ciudadLabel.text = ""
+        descripcionLabel.text = ""
+        sensacionLabel.text = ""
+        tempminLabel.text = ""
+        tempmaxLabel.text = ""
+        climaLabel.text = ""
+        
         
         climaManager.delegado = self
         locationManager.delegate = self
@@ -20,8 +34,6 @@ class ViewController: UIViewController {
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        
-        climaImageView.layer.masksToBounds = true
     }
 
     @IBAction func LocalizacionButton(_ sender: UIButton) {
@@ -77,9 +89,17 @@ extension ViewController: ClimaManagerDelegate {
         //print(clima.condicionClima)
         
         DispatchQueue.main.async {
-            self.temperaturaLabel.text = clima.temperatura1Decimal + " °C"
-            self.ciudadLabel.text = clima.descripcionClima.capitalizingFirstLetter()
+            self.temperaturaLabel.text = clima.temperatura1Decimal + "°C"
+            self.ciudadLabel.text = clima.nombreCiudad
+            self.descripcionLabel.text = clima.descripcionClima.capitalizingFirstLetter()
+            self.sensacionLabel.text = "Sensación térmica: " + clima.sensacion1Decimal
+            self.tempminLabel.text = "Temp. minima: " + clima.min1Decimal
+            self.tempmaxLabel.text = "Temp. maxima: " + clima.max1Decimal
             self.climaImageView.image = UIImage(named: clima.iconoClima)
+            self.climaImageView.layer.masksToBounds = true
+            self.climaImageView.layer.borderWidth = 2
+            self.climaImageView.layer.borderColor = UIColor.systemOrange.cgColor
+            self.climaLabel.text = "Clima"
         }
     }
     
