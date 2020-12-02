@@ -40,35 +40,32 @@ class ViewController: UIViewController {
         locationManager.requestLocation()
     }
     
-    @IBAction func BuscarButton(_ sender: UIButton) {
-        if !buscarTextField.text!.isEmpty {
-            //ciudadLabel.text = buscarTextField.text
-            climaManager.fetchClima(nombreCiudad: buscarTextField.text!)
-        }
-        else {
-            buscarTextField.placeholder = "Escribe una ciudad"
-        }
-    }
-    
 }
 
 //MARK:- Metodos para actualizar UI
 extension ViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        //ciudadLabel.text = buscarTextField.text
+        textField.resignFirstResponder()
         return true
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if !buscarTextField.text!.isEmpty {
-            ciudadLabel.text = buscarTextField.text
+            if !buscarTextField.text!.isEmpty {
+                climaManager.fetchClima(nombreCiudad: buscarTextField.text!)
+            }
+            buscarTextField.text = ""
             return true
         }
         else {
-            buscarTextField.text = "Escribe una ciudad"
-            return false
+            let alertError = UIAlertController(title: "Favor de ingresar una ciudad", message: nil, preferredStyle: .alert)
+            let actionErrorAceptar = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+            alertError.addAction(actionErrorAceptar)
+            self.present(alertError, animated: true, completion: nil)
+            return true
         }
+        
     }
     
 }
@@ -79,7 +76,19 @@ extension ViewController: ClimaManagerDelegate {
     func huboError(cualError: Error) {
         print(cualError.localizedDescription)
         DispatchQueue.main.async {
-            self.ciudadLabel.text = cualError.localizedDescription
+            let descripcionError: String
+            switch cualError.localizedDescription {
+                case "The data couldn’t be read because it is missing.":
+                    descripcionError = "No se encontro un resultado"
+                case "A server with the specified hostname could not be found.":
+                    descripcionError = "Error del servidor"
+                default:
+                    descripcionError = "Error insepecifico"
+            }
+            let alertError = UIAlertController(title: descripcionError, message: nil, preferredStyle: .alert)
+            let actionErrorAceptar = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+            alertError.addAction(actionErrorAceptar)
+            self.present(alertError, animated: true, completion: nil)
         }
     }
     

@@ -12,7 +12,8 @@ struct ClimaManager {
     let climaURL = "https://api.openweathermap.org/data/2.5/weather?appid=ad1b26cb01822a183f35550fd50c8b5b&units=metric&lang=es"
     
     func fetchClima(nombreCiudad: String) {
-        let urlString = "\(climaURL)&q=\(nombreCiudad)"
+        let auxCiudad = nombreCiudad.replacingOccurrences(of: " ", with: "+", options: .literal, range: nil)
+        let urlString = "\(climaURL)&q=\(auxCiudad)"
         print(urlString)
         
         realizarSolicitud(urlString: urlString)
@@ -34,12 +35,14 @@ struct ClimaManager {
                     //print(error!)
                     self.delegado?.huboError(cualError: error!)
                 }
-                if let datosSeguros = data {
-                    //let dataString = String(data: datosSeguros, encoding: .utf8)
-                    //print(dataString!)
-                    //self.parseJSON(climaData: datosSeguros)
-                    if let clima = self.parseJSON(climaData: datosSeguros) {
-                        self.delegado?.actualizarClima(clima: clima)
+                else {
+                    if let datosSeguros = data {
+                        //let dataString = String(data: datosSeguros, encoding: .utf8)
+                        //print(dataString!)
+                        //self.parseJSON(climaData: datosSeguros)
+                        if let clima = self.parseJSON(climaData: datosSeguros) {
+                            self.delegado?.actualizarClima(clima: clima)
+                        }
                     }
                 }
             }
